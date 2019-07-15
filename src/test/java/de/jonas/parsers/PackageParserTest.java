@@ -19,7 +19,7 @@ public class PackageParserTest {
 
 	@Test
 	public void testGetPackages() {
-		assertEquals(Arrays.asList("src.main.java.de.jonas","src.main.java.de.jonas.analyzer","src.main.java.de.jonas.parsers"), toTest.getPackages());
+		assertEquals(Arrays.asList("src.main.java.de.jonas","src.main.java.de.jonas.analyzer", "src.main.java.de.jonas.output","src.main.java.de.jonas.parsers"), toTest.getPackages());
 	}
 
 }

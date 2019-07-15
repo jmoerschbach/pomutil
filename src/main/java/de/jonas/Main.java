@@ -1,5 +1,6 @@
 package de.jonas;
 
+import java.io.File;
 import java.net.URISyntaxException;
 import java.util.List;
 
@@ -8,6 +9,9 @@ import com.beust.jcommander.ParameterException;
 
 import de.jonas.analyzer.DependencyAnalyser;
 import de.jonas.analyzer.ProblematicDependency;
+import de.jonas.output.ConsoleOutputter;
+import de.jonas.output.FileOutputter;
+import de.jonas.output.Outputter;
 
 public class Main {
 
@@ -21,9 +25,11 @@ public class Main {
 			System.exit(0);
 		}
 		List<ProblematicDependency> problems = new DependencyAnalyser(input).analyze();
-		System.out.println();
-		System.out.println("Problems:");
-		problems.forEach(System.out::println);
+		Outputter console = new ConsoleOutputter();
+		console.output(problems);
+
+		Outputter file = new FileOutputter(new File(input.getOutputFile()));
+		file.output(problems);
 
 	}
 

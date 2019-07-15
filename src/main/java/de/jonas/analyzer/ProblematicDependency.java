@@ -1,6 +1,7 @@
 package de.jonas.analyzer;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProblematicDependency {
@@ -15,6 +16,14 @@ public class ProblematicDependency {
 
 	public String toString() {
 		return file.toString() + ": " + imports;
+	}
+
+	public String getFileName() {
+		return file.getPath();
+	}
+
+	public List<String> getProblematicStatements() {
+		return new ArrayList<String>(imports);
 	}
 
 }
