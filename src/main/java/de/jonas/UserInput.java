@@ -1,9 +1,12 @@
 package de.jonas;
 
+import java.util.List;
+
+import org.apache.commons.io.ByteOrderMark;
+
 import com.beust.jcommander.Parameter;
 
 import de.jonas.analyzer.Dummy;
-import org.apache.commons.io.ByteOrderMark;
 
 public class UserInput {
 	@Parameter(names = { "--mavenDependency",
@@ -11,7 +14,7 @@ public class UserInput {
 	private String mavenDepencencyTree = "tree.txt";
 	@Parameter(names = { "--root",
 			"--r" }, description = "The root directory for searching all subpackages. Default NEEDS TO BE CHANGED", required = true)
-	private String rootPackage = "src\\main\\java\\de";
+	private List<String> rootPackage;
 	@Parameter(names = { "--output", "--o" }, description = "The directory/file the output is written to")
 	private String outputFile = "output";
 
@@ -19,7 +22,7 @@ public class UserInput {
 		return mavenDepencencyTree;
 	}
 
-	public String getRootPackage() {
+	public List<String> getRootPackages() {
 		return rootPackage;
 	}
 

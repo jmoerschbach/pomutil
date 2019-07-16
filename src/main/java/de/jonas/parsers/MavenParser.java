@@ -43,6 +43,8 @@ public class MavenParser {
 			e.printStackTrace();
 		}
 		directDependencies = all.stream().distinct().collect(Collectors.toList());
+		System.out.println("found direct dependencies:");
+		directDependencies.forEach(System.out::println);
 	}
 
 	public List<String> getDirectDependencies() {

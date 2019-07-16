@@ -11,8 +11,8 @@ public class DependencyAnalyzerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		UserInput input = new UserInput();
-		toTest = new DependencyAnalyser(input);
+//		UserInput input = new UserInput();
+//		toTest = new DependencyAnalyser(input);
 	}
 
 	@Test

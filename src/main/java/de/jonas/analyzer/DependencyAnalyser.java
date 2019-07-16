@@ -3,6 +3,7 @@ package de.jonas.analyzer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import de.jonas.UserInput;
 import de.jonas.parsers.ImportParser;
@@ -18,12 +19,14 @@ public class DependencyAnalyser {
 	public DependencyAnalyser(UserInput input) {
 		this.input = input;
 		directDependencies = new MavenParser(input.getMavenDepencencyTree()).getDirectDependencies();
-		packages = new PackageParser(new File(input.getRootPackage())).getPackages();
+		List<File> rootPackages = input.getRootPackages().stream().map(File::new).collect(Collectors.toList());
+		packages = new PackageParser(rootPackages).getPackages();
+		System.out.println();
 
 	}
 
 	public List<ProblematicDependency> analyze() {
-		File f = new File(input.getRootPackage());
+		File f = new File(input.getRootPackages().get(0));
 		System.out.println("start analyzing " + f);
 		List<ProblematicDependency> problems = new ArrayList<>();
 		visit(f, problems);
